@@ -1,0 +1,1 @@
+window.location.replace('../src/index/homepage.html')
