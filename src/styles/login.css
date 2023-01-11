@@ -125,7 +125,7 @@ header>div:first-child>h1{
 
 main{
     width: 100vw;
-    height: 510px;
+    height: 470px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -159,18 +159,23 @@ main>div>div>section{
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-    height: 228px;
+    height: 100px;
     gap: 13px;
 }
 
 main>div>h1{
-    margin-left: 5%;  
+    margin: auto auto 8px 5%;  
     font-size: var(--font-size-2); 
     margin-top: 40px; 
     display: flex;
     justify-content: flex-start;
     font-family: var(--font-family-poppins);
     font-weight: var(--font-weight-2);
+}
+
+main>div>p{
+    margin-left: 5%;
+    font-size: var(--font-size-6);
 }
 
 main>div>div>form{
@@ -193,7 +198,23 @@ main>div>div>form>button:nth-child(1){
     font-weight: var(--font-weight-2);
 }
 
-main>div>div>form>button:nth-child(2){
+.cadastro{
+    width: 90%;
+    height: 45px;
+    padding: 17px auto 13px 20px;
+    box-sizing: border-box;
+    border: none;
+    font-size: var(--font-size-5);
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    font-weight: var(--font-weight-2);
+}
+
+main>div>div>form>p{
+    padding: 14px;
+}
+
+.cadastre-se{
     width: 90%;
     height: 45px;
     padding: 17px auto 13px 20px;
@@ -213,11 +234,6 @@ main>div>div>section>input{
     box-sizing: border-box;
 }
 
-/* main>div>div>section>input::placeholder{ */
-/* box-sizing: border-box; */
-/* padding: 17px auto 13px 20px !important; */
-/* } */
-
 main>div>div>section>select{
     width: 90%;
     height: 45px;
@@ -227,9 +243,7 @@ main>div>div>section>select{
     color: var(--color-black-transparent-95);
 }
 
-
 @media(min-width: 768px){
-
     body{
         display: flex;
         flex-direction: column;
@@ -263,9 +277,11 @@ main>div>div>section>select{
         height: 100%;
         gap: 13px;
     }
+
     .menuMobile{
         display: none;
     }
+
     .buttonsHomeAndLoginDesktop{
         display: flex;
         gap: 11px;
@@ -276,7 +292,7 @@ main>div>div>section>select{
         width: 132px;
     }
 
-    .login{
+    .cadastro{
         height: 38px;
         width: 132px;
     }

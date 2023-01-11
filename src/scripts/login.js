@@ -1,4 +1,4 @@
-function openMenu (){
+function openMenuLogin(){
 
     let menuAsideContent = document.querySelector(`.menuAsideContent`) 
     let openBtn = document.querySelector(`.openBtn`) 
@@ -9,7 +9,7 @@ function openMenu (){
 
 }
 
-function closeMenu(){
+function closeMenuLogin(){
     let menuAsideContent = document.querySelector(`.menuAsideContent`) 
     let closeBtn = document.querySelector(`.closeBtn`) 
 
@@ -18,17 +18,13 @@ function closeMenu(){
     })
 }
 
-// function professionalLevelsList(){
-//     let select = document.getElementById(`professionalLevelsList`)
-// }
-
 function goToHome(){
 
     let getHome = document.querySelector('.goToHome')
 
     getHome.addEventListener('click', (event)=>{
 
-        console.log(event)
+        // console.log(event)
         window.location.replace('../../src/index/homepage.html')
     })
 
@@ -41,37 +37,39 @@ function goToHome(){
     })
 }
 
-function goToLogin(){
+function goToCadastro(){
 
-    let getLogin = document.querySelector('.goToLogin')
-    
-    getLogin.addEventListener('click', (event)=>{
-        
-        console.log(event)
-        window.location.replace('../../src/index/login.html')
+    let getCadastro = document.querySelector('.goToCadastro')
+
+    getCadastro.addEventListener('click', (event)=>{
+
+        // console.log(event)
+        window.location.replace('../../src/index/register.html')
     })
-    
-    let getLoginDesktop = document.querySelector('.goToLoginDesktop')
 
-    getLoginDesktop.addEventListener('click', (event)=>{
+    let getCadastroDesktop = document.querySelector('.goToCadastroDesktop')
+    
+    getCadastroDesktop.addEventListener('click', (event)=>{
 
         console.log(event)
-        window.location.replace('../../src/index/login.html')
+        window.location.replace('../../src/index/register.html')
     })
 }
 
-function retrurnToLogin(){
-    let returnBtn = document.querySelector('.return')
+function goToCadastrar(){
+    let cadastrar = document.querySelector('.cadastre-se')
 
-    returnBtn.addEventListener('click', ()=>{
+    console.log(cadastrar)
+    
+    cadastrar.addEventListener('click', (event)=>{
 
-        window.location.replace('../../src/index/login.html')
+        console.log(event)
+        window.location.replace('../../src/index/register.html')
     })
 }
 
-
-closeMenu()
-openMenu()
+openMenuLogin()
+closeMenuLogin()
 goToHome()
-goToLogin()
-retrurnToLogin()
+goToCadastro()
+goToCadastrar()

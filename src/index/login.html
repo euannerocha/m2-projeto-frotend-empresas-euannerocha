@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/register.css">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/globalStyles.css">
-    <script defer src="../scripts/register.js"></script>
-    <title>Cadastre-se!</title>
+    <link rel="stylesheet" href="../styles/login.css">
+    <script defer src="../scripts/login.js"></script>
+    <title>Document</title>
 </head>
-
 <body>
     <header>
         <div>
@@ -31,7 +29,7 @@
                 </div>
                 <ul>
                     <li><button class="home goToHome" aria-label="ir para a página inicial">Home</button></li>
-                    <li><button class="login goToLogin" aria-label="ir para página de Login">Login</button></li>
+                    <li><button class="login goToCadastro" aria-label="ir para página de Login">Cadastro</button></li>
                 </ul>
             </nav>
         </div>
@@ -39,28 +37,26 @@
         <!-- DIV PARA DESKTOP -->
         <div class="buttonsHomeAndLoginDesktop">
             <button class="home goToHomeDesktop" aria-label="ir para a página inicial">Home</button>
-            <button class="login goToLoginDesktop" aria-label="ir para página de Login">Login</button>
+            <button class="cadastro goToCadastroDesktop" aria-label="ir para página de Cadastro">Cadastro</button>
         </div>
     </header>
+
     <main>
         <div>
-            <h1>Cadastre-se</h1>
+            <h1>Login</h1>
+            <p>Preencha os campos para realizar login</p>
             <div class="sectionAndForm">
                 <section>
-                    <input type="text" placeholder="Seu nome">
                     <input type="email" placeholder="Seu e-mail">
                     <input type="password" placeholder="Sua senha">
-                    <select id="professionalLevelsList" name="Nível profissional">
-                        <option value="Valor1">Nível profissional</option>
-                    </select>
                 </section>
                 <form>
-                    <button type="submit">Cadastre-se</button>
-                    <button type="button" class="return">Retornar</button>
+                    <button>Login</button>
+                    <p>ou</p>
+                    <button type="button" class="cadastre-se">Cadastre-se</button>
                 </form>
             </div>
         </div>
     </main>
 </body>
-
 </html>
