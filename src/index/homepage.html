@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/globalStyles.css">
+    <link rel="stylesheet" href="../styles/homepage.css">
+    <script defer src="../scripts/homepage.js"></script>
     <title>Homepage</title>
 </head>
 <body>
@@ -26,17 +28,26 @@
                     <img class="closeBtn" src="../assets/images/closeBtn.png" alt="Fechar menu lateral">
                 </div>
                 <ul>
-                    <li><button class="home goToHome" aria-label="ir para a página inicial">Home</button></li>
-                    <li><button class="login goToCadastro" aria-label="ir para página de cadastro">Cadastro</button></li>
+                    <li><button class="login goToLogin" aria-label="ir para a página de login">Login</button></li>
+                    <li><button class="cadastro goToCadastro" aria-label="ir para página de cadastro">Cadastro</button></li>
                 </ul>
             </nav>
         </div>
 
         <!-- DIV PARA DESKTOP -->
         <div class="buttonsHomeAndLoginDesktop">
-            <button class="home goToHomeDesktop" aria-label="ir para a página inicial">Home</button>
+            <button class="login goToLoginDesktop" aria-label="ir para a página de login">Login</button>
             <button class="cadastro goToCadastroDesktop" aria-label="ir para página de cadastro">Cadastro</button>
         </div>
     </header>
+
+    <main>
+        <div class="hidding"></div>
+
+
+        <select name="selectSetores" id="setores">
+            <option value="valor1">Selecionar Setor</option>
+        </select>
+    </main>
 </body> 
 </html>
