@@ -58,7 +58,9 @@ async function requestEmpresas(){
     })
     return empresasPorSetor
 }
-    
+ 
+
+
 async function login(corpo){
     const url = await fetch('http://localhost:6278/auth/login', {
         method: 'POST',
@@ -73,6 +75,7 @@ async function login(corpo){
 }
 requestSetores()
 requestEmpresas()
+
 
 async function criarUsuario(corpoCria){
     const url = await fetch('http://localhost:6278/auth/register', {

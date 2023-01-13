@@ -68,40 +68,31 @@ function retrurnToLogin(){
     })
 }
 
+
+
+
 import{ criarUsuario } from './requests.js'
 
-function criarUsuarioRegister(){
-    const inputs = document.querySelectorAll('.inputsCadastro > inputs')
-    const btnCadastro = document.getElementById('registerAndGoToLogin')
-    const novoUsuario = {}
-
+function criarBodyDeRegister(){
+    const inputNome = document.querySelector('.inputNome')
+    const inputEmail = document.querySelector('.inputEmail')
+    const inputSenha = document.querySelector('.inputSenha')
+    const selectNivel = document.querySelector('#professionalLevelsList')
+    const btnCadastro = document.querySelector('#registerAndGoToLogin')
+    
+    
     btnCadastro.addEventListener('click', async (event)=>{
         event.preventDefault()
-
-        // const inputNome = document.querySelector('.inputNome')
-//         const inputEmail = document.querySelector('.inputEmail')
-//         const inputSenha = document.querySelector('.inputSenha')
-//         const selectNivel = document.querySelector('#professionalLevelsList')
-
-//         console.log(selectNivel)
-
-
-//         const montandoObjetoBody = {
-//             username: inputNome.value,
-//             password: inputSenha.value,
-//             email: inputEmail.value,
-//             professional_level: selectNivel.innerText
-//         }
-
-        inputs.forEach(inpt => {
-            novoUsuario[inpt.name] = inpt.value
-        })
-
-        const requisicao = await criarUsuario(novoUsuario)
+        
+        const objetoBody = {
+            'username': inputNome.value,
+            'password': inputSenha.value,
+            'email': inputEmail.value,
+            'professional_level': selectNivel.value
+        }
+        
+        const requisicao = await criarUsuario(objetoBody)
     })
-
-    return novoUsuario
-
 }
 
 
@@ -110,7 +101,7 @@ openMenu()
 goToHome()
 goToLogin()
 retrurnToLogin()
-criarUsuarioRegister()
+criarBodyDeRegister()
 
 // realizaCadastro()
 // verificaUsuarios()
