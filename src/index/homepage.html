@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <script defer src="../scripts/homepage.js"></script>
     <title>Homepage</title>
 </head>
+
 <body>
     <header>
         <div>
@@ -29,7 +31,8 @@
                 </div>
                 <ul>
                     <li><button class="login goToLogin" aria-label="ir para a página de login">Login</button></li>
-                    <li><button class="cadastro goToCadastro" aria-label="ir para página de cadastro">Cadastro</button></li>
+                    <li><button class="cadastro goToCadastro" aria-label="ir para página de cadastro">Cadastro</button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -44,10 +47,16 @@
     <main>
         <div class="hidding"></div>
 
+        <section class="sectionSelectAndCards">
+            <select name="selectSetores" id="setores">
+                <option value="valor1">Selecionar Setor</option>
+            </select>
 
-        <select name="selectSetores" id="setores">
-            <option value="valor1">Selecionar Setor</option>
-        </select>
+            <div class="divCardsList">
+                <ul class="ulCardsList"></ul>
+            </div>
+        </section>
     </main>
-</body> 
+</body>
+
 </html>
