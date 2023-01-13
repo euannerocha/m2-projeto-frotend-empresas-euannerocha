@@ -153,7 +153,7 @@ main>div{
     gap: 13px;
 }
 
-main>div>div>section{
+main>div>div>form:first-child{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -178,7 +178,7 @@ main>div>div>form{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 5px;
     gap: 13px;
 }
 
@@ -204,7 +204,7 @@ main>div>div>form>button:nth-child(2){
     font-weight: var(--font-weight-2);
 }
 
-main>div>div>section>input{
+main>div>div>form:first-child>input{
     width: 90%;
     height: 45px;
     border: 1px solid var(--color-black-transparent-20);
@@ -213,12 +213,7 @@ main>div>div>section>input{
     box-sizing: border-box;
 }
 
-/* main>div>div>section>input::placeholder{ */
-/* box-sizing: border-box; */
-/* padding: 17px auto 13px 20px !important; */
-/* } */
-
-main>div>div>section>select{
+main>div>div>form:first-child>select{
     width: 90%;
     height: 45px;
     padding: 17px auto 13px 20px;

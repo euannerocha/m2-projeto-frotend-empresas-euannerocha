@@ -36,7 +36,7 @@ function goToHome(){
         window.location.replace('../../src/index/homepage.html')
     })
 }
-
+ 
 function goToCadastro(){
 
     let getCadastro = document.querySelector('.goToCadastro')
@@ -68,8 +68,32 @@ function goToCadastrar(){
     })
 }
 
+import{ login } from './requests.js'
+
+function fazerLogin(){
+    const inputs = document.querySelectorAll('.fazerOLogin > input')
+    const btn = document.querySelector('.btnDeLogin')
+    const loginUser = {}
+
+    btn.addEventListener('click', async (event)=>{
+        event.preventDefault()
+
+        inputs.forEach(inpt =>{
+            loginUser[inpt.name] = inpt.value
+        })
+
+        const requisicao = await login(loginUser)
+
+        localStorage.setItem('user', JSON.stringify(requisicao))
+    })
+
+    return loginUser
+}
+
 openMenuLogin()
 closeMenuLogin()
 goToHome()
 goToCadastro()
 goToCadastrar()
+
+fazerLogin()

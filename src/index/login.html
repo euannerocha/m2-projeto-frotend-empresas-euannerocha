@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/globalStyles.css">
     <link rel="stylesheet" href="../styles/login.css">
-    <script defer src="../scripts/login.js"></script>
+    <script type="module" defer src="../scripts/login.js"></script>
+    <script type="module" defer src="../scripts/requests.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -46,12 +47,12 @@
             <h1>Login</h1>
             <p>Preencha os campos para realizar login</p>
             <div class="sectionAndForm">
-                <section>
-                    <input type="email" placeholder="Seu e-mail">
-                    <input type="password" placeholder="Sua senha">
-                </section>
+                <form class="fazerOLogin">
+                    <input name="email" type="email" placeholder="Seu e-mail">
+                    <input name="password" type="password" placeholder="Sua senha">
+                </form>
                 <form>
-                    <button>Login</button>
+                    <button class="btnDeLogin">Login</button>
                     <p>ou</p>
                     <button type="button" class="cadastre-se">Cadastre-se</button>
                 </form>

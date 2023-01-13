@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="../styles/register.css">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/globalStyles.css">
-    <script defer src="../scripts/register.js"></script>
+    <script type="module" defer src="../scripts/register.js"></script>
+    <script type="module" defer src="../scripts/requests.js"></script>
     <title>Cadastre-se!</title>
 </head>
 
@@ -46,16 +47,20 @@
         <div>
             <h1>Cadastre-se</h1>
             <div class="sectionAndForm">
-                <section>
-                    <input type="text" placeholder="Seu nome">
-                    <input type="email" placeholder="Seu e-mail">
-                    <input type="password" placeholder="Sua senha">
+                <form class="inputsCadastro">
+                    <input  class="inputNome"  name="name" type="text" placeholder="Seu nome">
+                    <input  class="inputEmail" name="email" type="email" placeholder="Seu e-mail">
+                    <input  class="inputSenha" name="password" type="password" placeholder="Sua senha">
                     <select id="professionalLevelsList" name="Nível profissional">
                         <option value="Valor1">Nível profissional</option>
+                        <option value="Valor2">Estágio</option>
+                        <option value="Valor3">Júnior</option>
+                        <option value="Valor4">Pleno</option>
+                        <option value="Valor5">Sênior</option>
                     </select>
-                </section>
+                </form>
                 <form>
-                    <button type="submit">Cadastre-se</button>
+                    <button id="registerAndGoToLogin" type="submit">Cadastre-se</button>
                     <button type="button" class="return">Retornar</button>
                 </form>
             </div>
