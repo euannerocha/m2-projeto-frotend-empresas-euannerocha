@@ -68,9 +68,6 @@ function retrurnToLogin(){
     })
 }
 
-
-
-
 import{ criarUsuario } from './requests.js'
 
 function criarBodyDeRegister(){
@@ -95,6 +92,24 @@ function criarBodyDeRegister(){
     })
 }
 
+
+const token = localStorage.getItem('token')
+
+function armazenaLocalToken(){
+    localStorage.setItem(oToken)
+}
+
+async function verificaUsuarios(){
+    const usuarios = await fetch('http://localhost:6278/users', {
+        method: "GET",
+        headers: {Authorization: `Bearer ${this.token}`}
+    })
+    .then(resp => resp.json())
+    .then(osta => console.log(osta))
+    .catch(error => console.log(error))
+
+    return usuarios
+}
 
 closeMenu()
 openMenu()

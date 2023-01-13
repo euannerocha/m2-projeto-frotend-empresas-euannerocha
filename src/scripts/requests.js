@@ -1,3 +1,5 @@
+// import { ClasseToastify } from "./toastfy.js"
+
 async function requestSetores(){
     let setores = await fetch('http://localhost:6278/sectors')
     .then(resp => {
@@ -54,7 +56,7 @@ async function requestEmpresas(){
            })
        })
     .catch(error => {
-        console.log(`Ops! Ocorreu o seguinte erro: ${error}`)
+        console.log(error)
     })
     return empresasPorSetor
 }
@@ -68,7 +70,9 @@ async function login(corpo){
         body: JSON.stringify(corpo)
     })
     .then(resp => resp.json())
-    .then(osta => console.log(osta))
+    .then(osta =>{
+        console.log(osta)
+    })
     .catch(error => console.log(error))
     
     return url
@@ -84,11 +88,25 @@ async function criarUsuario(corpoCria){
         body: JSON.stringify(corpoCria)
     })
     .then(resp => resp.json())
-    .then(osta => console.log(osta))
+    .then(osta => {
+        if(osta.error){
+            alert('E-mail já cadastrado!')
+        } else {
+            window.location.replace('../../src/index/login.html')
+        }
+        console.log(osta)
+    })
     .catch(error => console.log(error))
 
     return url
 }
+
+
+async function verificaLogin(){
+    const url = await fetch('http://localhost:6278/auth/validate_user')
+}
+
+
 
 export{
     login,
