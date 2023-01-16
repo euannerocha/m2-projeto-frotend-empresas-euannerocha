@@ -59,6 +59,6 @@ openMenuLogin()
 closeMenuLogin()
 goToLogin()
 goToCadastro()
-goToLoginDesk()
+goToLoginDesk() 
 goToCadastroDesk()
 

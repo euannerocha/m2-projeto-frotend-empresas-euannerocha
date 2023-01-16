@@ -1,13 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="../scripts/requests.js"></script>
+    <script defer type="module" src="../scripts/requests.js"></script>
+    <script defer type="module" src="../scripts/dashAdmin.js"></script>
+    <link rel="stylesheet" href="../styles/globalStyles.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/dashAdmin.css">
+    <script defer type="module" src="../scripts/dashAdmin.js"></script>
     <title>Document</title>
 </head>
+
 <body>
-    <h1>ADMIN</h1>
+    <header>
+        <div>
+            <figure>
+                <img src="../assets/images/ellipse.png" alt="ícone ilustrativo">
+                <figcaption class="figcaption">ícone ilustrativo: elipse de cor lilás</figcaption>
+            </figure>
+            <h1>Kenzie Empresas</h1>
+        </div>
+
+        <!-- DIV PARA MOBILE -->
+        <div class="menuMobile">
+            <img class="openBtn" src="../assets/images/openBtn.png" alt="Abrir menu lateral">
+            <nav class="menuAsideContent">
+                <div>
+                    <img class="closeBtn" src="../assets/images/closeBtn.png" alt="Fechar menu lateral">
+                </div>
+                <ul>
+                    <li><button class="login goToLogout goToLogin" aria-label="ir para a página de login">Logout</button></li>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="sectionSelectAndCardsAdmin">
+            <h1>Departamentos</h1>
+
+            <select name="selectEmpresasAdmin" id="empresasAdmin">
+                <option value="todos">Selecionar Empresa</option> 
+            </select>
+
+            <button class="btnCriar">+ Criar</button>
+
+            <div class="divCardsDepartamentos">
+                <ul class="ulCardsDepartamentos"></ul>
+            </div>
+
+        </section>
+
+        <section>
+
+            <h1>Usuários Cadastrados</h1>
+
+            <div class="divCardsDepartamentos">
+                <ul class="ulCardsDepartamentos"></ul>
+            </div>
+
+        </section>
+
+        <div class="divBackground">
+            <form class="modal">
+                <h1>Criar Departamento</h1>
+                <button class="close">X</button>
+
+                <input class="inptNomeDepto" type="text" placeholder="Nome do Departamento">
+                <input class="inptDescricaoDepto" type="text" placeholder="Descrição">
+                
+                <select name="selecionarEmpresa" id="selecionarEmpresa">
+                    <option value="selecionarEmpresa">Selecionar empresa</option>
+                </select>
+                <button class="criarDeptoModal">Criar o departamento</button>
+            </form>
+        </div>
+
+    </main>
 </body>
+
 </html>

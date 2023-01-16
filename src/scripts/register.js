@@ -18,10 +18,6 @@ function closeMenu(){
     })
 }
 
-// function professionalLevelsList(){
-//     let select = document.getElementById(`professionalLevelsList`)
-// }
-
 function goToHome(){
 
     let getHome = document.querySelector('.goToHome')
@@ -94,10 +90,6 @@ function criarBodyDeRegister(){
 
 
 const token = localStorage.getItem('token')
-
-function armazenaLocalToken(){
-    localStorage.setItem(oToken)
-}
 
 async function verificaUsuarios(){
     const usuarios = await fetch('http://localhost:6278/users', {
