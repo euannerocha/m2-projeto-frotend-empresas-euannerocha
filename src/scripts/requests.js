@@ -1,4 +1,5 @@
 // import { ClasseToastify } from "./toastfy.js"
+// import { visualizarDepartamento } from './dashAdmin.js'
 
 async function requestSetores() {
     let setores = await fetch('http://localhost:6278/sectors')
@@ -183,18 +184,36 @@ async function renderizaDeptos() {
                 companyName.innerText = element.companies.name
                 btnVisualiza.innerText = 'Visualizar'
                 btnEdita.innerText = 'Editar'
-                btnDeleta.innerText = 'Deletar'
 
+                btnDeleta.innerText = 'Deletar'
                 liCard.classList.add('liCard')
                 title.classList.add('title')
                 description.classList.add('hours')
                 companyName.classList.add('tagSetor')
+                btnVisualiza.classList.add('btnVisualiza')
+                btnEdita.classList.add('btnEdita')
+                btnDeleta.classList.add('btnDeleta')
 
 
                 appendDepto.append(liCard)
                 liCard.append(title, description, companyName, btnVisualiza, btnEdita, btnDeleta)
-            })
 
+                let divBackgroundVisualizar = document.querySelector(".divBackgroundVisualizar")
+
+                btnVisualiza.addEventListener('click', (event) => {
+                    divBackgroundVisualizar.style.display = 'unset'
+                })
+
+                let divBackgroundEditar = document.querySelector(".divBackgroundEditar")
+                btnEdita.addEventListener('click', (event) => {
+                    divBackgroundEditar.style.display = 'unset'
+                })
+
+                let divBackgroundDeletar = document.querySelector(".divBackgroundDeletar")
+                btnDeleta.addEventListener('click', (event) => {
+                    divBackgroundDeletar.style.display = 'unset'
+                })
+            })
 
             return osta
 
@@ -202,6 +221,28 @@ async function renderizaDeptos() {
         .catch(error => {
             console.log(error)
         })
+
+    let closeVisualizar = document.querySelector(".closeVisualizar")
+
+    let divBackgroundVisualizar = document.querySelector(".divBackgroundVisualizar")
+    closeVisualizar.addEventListener('click', (event) => {
+        divBackgroundVisualizar.style.display = 'none'
+    })
+
+    let closeEditar = document.querySelector(".closeEditar")
+
+    let divBackgroundEditar = document.querySelector(".divBackgroundEditar")
+    closeEditar.addEventListener('click', (event) => {
+        divBackgroundEditar.style.display = 'none'
+    })
+
+    let closeDeletar = document.querySelector(".closeDeletar")
+
+    let divBackgroundDeletar = document.querySelector(".divBackgroundDeletar")
+    closeDeletar.addEventListener('click', (event) => {
+        divBackgroundDeletar.style.display = 'none'
+    })
+
     return departamentos
 }
 
@@ -257,7 +298,7 @@ async function listarEmpresas() {
             return resp.json()
         })
         .then(osta => {
-            console.log(osta)
+            // console.log(osta)
             return osta
 
         })
@@ -274,44 +315,44 @@ async function criaDepto(body) {
 
     const url = await fetch('http://localhost:6278/departments', {
         method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}` },
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify(body)
     })
-    .then(resp => {
-        return resp.json()
-    })
-    .then(osta => {
+        .then(resp => {
+            return resp.json()
+        })
+        .then(osta => {
 
-        return osta 
+            return osta
 
-    })
-    .catch(error => {
-        console.log(error)
-    })
+        })
+        .catch(error => {
+            console.log(error)
+        })
 
     return url
 }
 
-async function alteraDescricao(){
+async function alteraDescricao() {
 
 
     const token = localStorage.getItem('token')
 
     const url = await fetch(`http://localhost:6278/departments/${uuid}`, {
         method: 'PATCH',
-        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }
+        headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${token}` }
     })
-    .then(resp => {
-        return resp.json()
-    })
-    .then(osta => {
+        .then(resp => {
+            return resp.json()
+        })
+        .then(osta => {
 
-        return osta 
+            return osta
 
-    })
-    .catch(error => {
-        console.log(error)
-    })
+        })
+        .catch(error => {
+            console.log(error)
+        })
 
     return url
 }

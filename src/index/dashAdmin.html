@@ -48,7 +48,7 @@
                 <option value="todos">Selecionar Empresa</option> 
             </select>
 
-            <button class="btnCriar">+ Criar</button>
+            <button type="button" class="btnCriar">+ Criar</button>
 
             <div class="divCardsDepartamentos">
                 <ul class="ulCardsDepartamentos"></ul>
@@ -66,10 +66,65 @@
 
         </section>
 
+
+        <!-- DIV MODAL CRIAR -->
+
         <div class="divBackground">
             <form class="modal">
                 <h1>Criar Departamento</h1>
                 <button class="close">X</button>
+
+                <input class="inptNomeDepto" type="text" placeholder="Nome do Departamento">
+                <input class="inptDescricaoDepto" type="text" placeholder="Descrição">
+                
+                <select name="selecionarEmpresa" id="selecionarEmpresa">
+                    <option value="selecionarEmpresa">Selecionar empresa</option>
+                </select>
+                <button class="criarDeptoModal">Criar o departamento</button>
+            </form>
+        </div>
+
+        <!-- DIV MODAL VISUALIZAR -->
+
+        <div class="divBackgroundVisualizar">
+            <form class="modal">
+                <h1>Criar Departamento</h1>
+                <button type="button" class="closeVisualizar">X</button>
+
+                <input class="inptNomeDepto" type="text" placeholder="Nome do Departamento">
+                <input class="inptDescricaoDepto" type="text" placeholder="Descrição">
+                
+                <select name="selecionarEmpresa" id="selecionarEmpresa">
+                    <option value="selecionarEmpresa">Selecionar empresa</option>
+                </select>
+                <button class="criarDeptoModal">Criar o departamento</button>
+            </form>
+        </div>
+
+        <!-- DIV MODAL EDITAR -->
+
+        <div class="divBackgroundEditar">
+            <form class="modal">
+                <h1>Criar Departamento</h1>
+                <button type="button" class="closeEditar">X</button>
+
+                <input class="inptNomeDepto" type="text" placeholder="Nome do Departamento">
+                <input class="inptDescricaoDepto" type="text" placeholder="Descrição">
+                
+                <select name="selecionarEmpresa" id="selecionarEmpresa">
+                    <option value="selecionarEmpresa">Selecionar empresa</option>
+                </select>
+                <button class="criarDeptoModal">Criar o departamento</button>
+            </form>
+        </div>
+
+
+        <!-- DIV MODAL DELETAR -->
+        
+        <div class="divBackgroundDeletar">
+            <form class="modal">
+                <h1>Criar Departamento</h1>
+                <button type="button" class="closeDeletar">X</button>
 
                 <input class="inptNomeDepto" type="text" placeholder="Nome do Departamento">
                 <input class="inptDescricaoDepto" type="text" placeholder="Descrição">

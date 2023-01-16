@@ -31,37 +31,22 @@ function goToLogout() {
     })
 }
 
-import { renderizaDeptos, selectEmpresas, listarSetores, criaDepto, listarEmpresas } from './requests.js'
+import { renderizaDeptos, selectEmpresas, listarSetores, criaDepto, listarEmpresas, listarDeptos } from './requests.js'
 
 
-let closeButton = document.querySelector(".close")
-
-let divBackground = document.querySelector(".divBackground")
 
 
-let openModal = document.querySelector(".btnCriar")
-
-closeButton.addEventListener('click', (event) => {
-    event.preventDefault()
-    divBackground.style.display = 'none'
-})
-
-openModal.addEventListener('click', (event) => {
-    event.preventDefault()
-    divBackground.style.display = 'unset'
-})
 
 async function selectDoModalCriarDepartamento() {
     const selecionarEmpresa = document.getElementById('selecionarEmpresa')
 
-    const setor = await listarSetores()
+    const setor = await listarEmpresas()
 
     setor.forEach(element => {
-        // console.log(element)
 
         let optionEmpresa = document.createElement('option')
-        optionEmpresa.innerText = element.description
-        optionEmpresa.value = element.description
+        optionEmpresa.innerText = element.name
+        optionEmpresa.value = element.uuid
 
         selecionarEmpresa.append(optionEmpresa)
     });
@@ -72,24 +57,12 @@ async function criarBodyDeDepto() {
     const inputDescricao = document.querySelector('.inptDescricaoDepto')
 
     const selectNivel = document.querySelector('#selecionarEmpresa')
-    console.log(selectNivel.value)
-
-    const uuidEmpresa = await listarEmpresas()
-
-    uuidEmpresa.forEach(element=>{
-        console.log(element.uuid)
-    })
-
-    let atribuirUuid = ''
-
-    if(selectNivel.value === uuidEmpresa.name){
-        atribuirUuid = uuidEmpresa.uuid
-    }
 
     const criaDeptoBtn = document.querySelector('.criarDeptoModal')
 
-    criaDeptoBtn.addEventListener('clck', async (event) => {
-        event.preventDefault()
+    criaDeptoBtn.addEventListener('click', async (event) => {
+
+        console.log(event)
 
         const objetoBody = {
             'name': inputNome.value,
@@ -97,12 +70,34 @@ async function criarBodyDeDepto() {
             'company_uuid': selectNivel.value
         }
 
+        console.log(objetoBody)
+
         const requisicao = await criaDepto(objetoBody)
         console.log(requisicao)
     })
+
 }
 
 
+function criaModal() {
+
+    const btnCriar = document.querySelector('.btnCriar')
+
+    let divBackground = document.querySelector(".divBackground")
+
+    btnCriar.addEventListener('click', (event) => {
+        console.log(event)
+        divBackground.style.display = 'unset'
+    })
+
+    let closeButton = document.querySelector(".close")
+
+    closeButton.addEventListener('click', (event) => {
+        console.log('oi isso é um texto')
+        event.preventDefault()
+        divBackground.style.display = 'none'
+    })
+}
 
 goToLogout()
 renderizaDeptos()
@@ -111,4 +106,4 @@ closeMenuLogin()
 selectEmpresas()
 criarBodyDeDepto()
 selectDoModalCriarDepartamento()
-criarBodyDeDepto()
+criaModal()

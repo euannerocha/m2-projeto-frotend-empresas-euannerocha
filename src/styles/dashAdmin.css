@@ -4,6 +4,7 @@ body{
     background-size: cover;
     display: flex;
     flex-direction: column;
+    overflow-x: scroll;
 }
 
 .figcaption{
@@ -17,6 +18,40 @@ body{
     gap: 20px;
     margin-top: 100px;
     align-items: flex-start;
+}
+.divCardsDepartamentos{
+    max-width: 90vw;
+}
+
+.divBackgroundVisualizar{
+    position: fixed;
+    display: none;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-grey-opacity-1);
+}
+.divBackgroundEditar{
+    position: fixed;
+    display: none;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-grey-opacity-1);
+}
+.divBackgroundDeletar{
+    position: fixed;
+    display: none;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-grey-opacity-1);
 }
 
 .ulCardsDepartamentos{
@@ -224,6 +259,9 @@ main{
     margin-bottom: 30px;
 }
 @media(min-width: 768px){
+    .divBackgroundVisualizar{
+        display: none;
+    }
 
     .sectionSelectAndCardsAdmin{
         display: flex;
@@ -295,6 +333,10 @@ main{
         display: flex;
         width: 40vw;
         overflow-y: scroll;
+    }
+
+    .divCardsDepartamentos{
+        max-width: 90vw;
     }
     
     .ulCardsList{
@@ -374,6 +416,37 @@ main{
     background-color: var(--color-grey-opacity-1);
 }
 
+.divBackgroundVisualizar{
+    position: fixed;
+    display: none;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-grey-opacity-1);
+}
+.divBackgroundEditar{
+    position: fixed;
+    display: none;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-grey-opacity-1);
+}
+.divBackgroundDeletar{
+    position: fixed;
+    display: none;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-grey-opacity-1);
+}
+
 .modal{
     display: flex;
     flex-direction: column;
@@ -404,4 +477,12 @@ main{
 
 .close:hover{
     cursor: pointer;
+}
+
+#selecionarEmpresa{
+    max-width: 100px;
+}
+
+.close{
+    margin-right: 50px;
 }
