@@ -59,7 +59,7 @@ function goToCadastro(){
 function goToCadastrar(){
     let cadastrar = document.querySelector('.cadastre-se')
 
-    console.log(cadastrar)
+    // console.log(cadastrar)
     
     cadastrar.addEventListener('click', (event)=>{
 
@@ -68,7 +68,7 @@ function goToCadastrar(){
     })
 }
 
-import{ login } from './requests.js'
+import{ login, verificaLogin } from './requests.js'
 
 function fazerLogin(){
     const inputs = document.querySelectorAll('.fazerOLogin > input')
@@ -84,16 +84,29 @@ function fazerLogin(){
 
         const requisicao = await login(loginUser)
 
-        localStorage.setItem('user', JSON.stringify(requisicao))
-    })
+        localStorage.setItem('token', requisicao)
+        
+        const verifica = await verificaLogin()
 
+        if(verifica){
+            window.location.replace('../../src/index/dashAdmin.html')
+        } else{
+            window.location.replace('../../src/index/dashUser.html')
+        }
+
+        // console.log(typeof verifica)
+        
+    })
+    
     return loginUser
+
 }
+
+
 
 openMenuLogin()
 closeMenuLogin()
 goToHome()
 goToCadastro()
 goToCadastrar()
-
 fazerLogin()

@@ -1,10 +1,12 @@
+import{ requestSetores, requestEmpresas } from './requests.js'
+
+requestSetores()
+requestEmpresas()
+
 function openMenuLogin(){
 
     let menuAsideContent = document.querySelector(".menuAsideContent") 
     let openBtn = document.querySelector(".openBtn") 
-    
-// console.log(openBtn)
-// console.log(menuAsideContent)
 
     openBtn.addEventListener('click', ()=>{     
         menuAsideContent.style.display = `flex`

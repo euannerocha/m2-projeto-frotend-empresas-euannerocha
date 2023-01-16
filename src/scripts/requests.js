@@ -2,11 +2,11 @@
 
 async function requestSetores(){
     let setores = await fetch('http://localhost:6278/sectors')
+    
     .then(resp => {
      return resp.json()
     })
     .then(osta => {
-        console.log(osta)
 
         let optionAppend = document.getElementById('setores')
 
@@ -18,12 +18,21 @@ async function requestSetores(){
 
             optionAppend.append(sector)
         })
+
+        return osta
+
     })
     .catch(error => {
         console.log(error)
     })
+    console.log(setores)
     return setores
 }
+
+//condicional:
+//evento change no select 
+//quando trocar, a condicional será: se o value do option for "todos", renderizar todas as empresas
+//se não, fazer um filtro aonde o setor é igual ao value do option e renderizar
 
 async function requestEmpresas(){
 
@@ -32,8 +41,7 @@ async function requestEmpresas(){
         return resp.json()
        })
     .then(osta => {
-           console.log(osta)
-
+        console.log(osta)
            let appendCards = document.querySelector('.ulCardsList')
 
            osta.forEach(element =>{
@@ -54,6 +62,9 @@ async function requestEmpresas(){
                 appendCards.append(liCard)
                 liCard.append(title, hours, tagSetor)
            })
+        
+           return osta
+
        })
     .catch(error => {
         console.log(error)
@@ -71,14 +82,14 @@ async function login(corpo){
     })
     .then(resp => resp.json())
     .then(osta =>{
-        console.log(osta)
+        
+        return osta.token
     })
     .catch(error => console.log(error))
     
     return url
 }
-requestSetores()
-requestEmpresas()
+
 
 
 async function criarUsuario(corpoCria){
@@ -94,7 +105,9 @@ async function criarUsuario(corpoCria){
         } else {
             window.location.replace('../../src/index/login.html')
         }
-        console.log(osta)
+
+        return osta
+
     })
     .catch(error => console.log(error))
 
@@ -103,12 +116,38 @@ async function criarUsuario(corpoCria){
 
 
 async function verificaLogin(){
-    const url = await fetch('http://localhost:6278/auth/validate_user')
+
+        const token = localStorage.getItem('token')
+
+        console.log(token)
+
+        const url = await fetch('http://localhost:6278/auth/validate_user', {
+            method: 'GET',
+            headers: {'Authorization': `Bearer ${token}`}
+        })
+        .then(resp => resp.json())
+        .then(osta =>{
+            
+            return osta.is_admin
+        })
+        .catch(error => console.log(error))
+    
+        return url
+}
+
+
+async function listaDeptos(){
+    const token = localStorage.getItem('token')
+
+    console.log(token)
 }
 
 
 
 export{
     login,
-    criarUsuario
+    criarUsuario,
+    verificaLogin,
+    requestSetores,
+    requestEmpresas
 }
