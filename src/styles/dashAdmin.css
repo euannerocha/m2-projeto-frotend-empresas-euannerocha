@@ -11,6 +11,11 @@ body{
     display: none;
 }
 
+.ulCardsUsuarios{
+    display: flex;
+    gap: 20px;
+}
+
 .sectionSelectAndCardsAdmin{
     display: flex;
     flex-direction: column;
@@ -60,10 +65,6 @@ body{
     overflow-x: scroll;
 
 }
-
-/* .buttonsHomeAndLoginDesktop{
-    display: none;
-} */
 
 .menuMobile{
     display: flex;

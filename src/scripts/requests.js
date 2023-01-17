@@ -199,9 +199,11 @@ async function renderizaDeptos() {
                 liCard.append(title, description, companyName, btnVisualiza, btnEdita, btnDeleta)
 
                 let divBackgroundVisualizar = document.querySelector(".divBackgroundVisualizar")
+                // let appendVisualizar = document.querySelector('.appendVisualizar')
 
                 btnVisualiza.addEventListener('click', (event) => {
                     divBackgroundVisualizar.style.display = 'unset'
+
                 })
 
                 let divBackgroundEditar = document.querySelector(".divBackgroundEditar")
@@ -357,6 +359,51 @@ async function alteraDescricao() {
     return url
 }
 
+async function renderizaUsuarios(){
+    const token = localStorage.getItem('token')
+
+    const url = await fetch('http://localhost:6278/users', {
+        method: 'GET',
+        headers: { 'Authorization': `Bearer ${token}` }
+    })
+        .then(resp => {
+            return resp.json()
+        })
+        .then(osta => {
+            console.log(osta)
+            return osta
+
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+    return url
+}
+
+async function contrataFuncionario(body){
+    const token = localStorage.getItem('token')
+
+    const url = await fetch('http://localhost:6278/departments/hire/', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify(body)
+    })
+        .then(resp => {
+            return resp.json()
+        })
+        .then(osta => {
+            console.log(osta)
+            return osta
+
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+    return url
+}
+
 
 
 
@@ -372,5 +419,7 @@ export {
     listarDeptos,
     listarSetores,
     criaDepto,
-    listarEmpresas
+    listarEmpresas,
+    renderizaUsuarios,
+    contrataFuncionario
 }

@@ -31,7 +31,7 @@ function goToLogout() {
     })
 }
 
-import { renderizaDeptos, selectEmpresas, listarSetores, criaDepto, listarEmpresas, listarDeptos } from './requests.js'
+import { renderizaDeptos, selectEmpresas, listarSetores, criaDepto, listarEmpresas, listarDeptos, renderizaUsuarios, contrataFuncionario } from './requests.js'
 
 
 
@@ -93,10 +93,86 @@ function criaModal() {
     let closeButton = document.querySelector(".close")
 
     closeButton.addEventListener('click', (event) => {
-        console.log('oi isso é um texto')
         event.preventDefault()
         divBackground.style.display = 'none'
     })
+}
+
+async function mostraCardsUsuario(){
+    const ulCardsUsuarios = document.querySelector('.ulCardsUsuarios')
+
+    const usuarios = await renderizaUsuarios()
+    console.log(usuarios)
+    
+    usuarios.forEach((element)=>{
+        if(element.is_admin === false){
+        console.log(element)
+    
+    
+            let liUsuario = document.createElement('li')
+            let nameUsuario = document.createElement('h1')
+            let cargoUsuario = document.createElement('p')
+            let empresaUsuario = document.createElement('p')
+            let btnEditarUsuario = document.createElement('button')
+            let btnDeletarUsuario = document.createElement('button')
+    
+            nameUsuario.innerText = element.username
+            cargoUsuario.innerText = element.professional_level
+            empresaUsuario.innerText = element.department_uuid
+
+    
+            btnEditarUsuario.innerText = 'Editar'
+            btnDeletarUsuario.innerText = 'Deletar'
+    
+            ulCardsUsuarios.append(liUsuario)
+            liUsuario.append(nameUsuario, cargoUsuario, empresaUsuario, btnEditarUsuario, btnDeletarUsuario)
+        }
+    })
+
+}
+
+async function selectUser(){
+    let selecionarUsuario = document.querySelector('#selecionarUsuario')
+    const usuarios = await renderizaUsuarios()
+    console.log(usuarios)
+
+    usuarios.forEach((element)=>{
+        if(element.is_admin === false){
+
+            let optionUser = document.createElement('option')
+            optionUser.innerText = element.username
+    
+            selecionarUsuario.append(optionUser)
+        }
+
+    })
+    
+}
+
+async function contrataFuncionario(){
+    
+    const inputNome = document.querySelector('.inptNomeDepto')
+    const inputDescricao = document.querySelector('.inptDescricaoDepto')
+
+
+    let btnContratarFuncionario = document.querySelector('.btnContratarFuncionario')
+
+    btnContratarFuncionario.addEventListener('click', async (event) => {
+
+        console.log(event)
+
+        const objetoBody = {
+            'name': inputNome.value,
+            'description': inputDescricao.value,
+            'company_uuid': selectNivel.value
+        }
+
+        console.log(objetoBody)
+
+        const requisicao = await criaDepto(objetoBody)
+        console.log(requisicao)
+    })
+
 }
 
 goToLogout()
@@ -107,3 +183,5 @@ selectEmpresas()
 criarBodyDeDepto()
 selectDoModalCriarDepartamento()
 criaModal()
+mostraCardsUsuario()
+selectUser()
