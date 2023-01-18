@@ -60,27 +60,7 @@ async function requestEmpresas() {
             return resp.json()
         })
         .then(osta => {
-            console.log(osta)
-            let appendCards = document.querySelector('.ulCardsList')
-
-            osta.forEach(element => {
-                let liCard = document.createElement('li')
-                let title = document.createElement('h1')
-                let hours = document.createElement('p')
-                let tagSetor = document.createElement('p')
-
-                title.innerText = element.name
-                hours.innerText = element.opening_hours
-                tagSetor.innerText = element.sectors.description
-
-                liCard.classList.add('liCard')
-                title.classList.add('title')
-                hours.classList.add('hours')
-                tagSetor.classList.add('tagSetor')
-
-                appendCards.append(liCard)
-                liCard.append(title, hours, tagSetor)
-            })
+            // console.log(osta)
 
             return osta
 
@@ -168,82 +148,12 @@ async function renderizaDeptos() {
         })
         .then(osta => {
 
-            let appendDepto = document.querySelector('.ulCardsDepartamentos')
-
-            osta.forEach(element => {
-                let liCard = document.createElement('li')
-                let title = document.createElement('h1')
-                let description = document.createElement('p')
-                let companyName = document.createElement('p')
-                let btnVisualiza = document.createElement('button')
-                let btnEdita = document.createElement('button')
-                let btnDeleta = document.createElement('button')
-
-                title.innerText = element.name
-                description.innerText = element.description
-                companyName.innerText = element.companies.name
-                btnVisualiza.innerText = 'Visualizar'
-                btnEdita.innerText = 'Editar'
-
-                btnDeleta.innerText = 'Deletar'
-                liCard.classList.add('liCard')
-                title.classList.add('title')
-                description.classList.add('hours')
-                companyName.classList.add('tagSetor')
-                btnVisualiza.classList.add('btnVisualiza')
-                btnEdita.classList.add('btnEdita')
-                btnDeleta.classList.add('btnDeleta')
-
-
-                appendDepto.append(liCard)
-                liCard.append(title, description, companyName, btnVisualiza, btnEdita, btnDeleta)
-
-                let divBackgroundVisualizar = document.querySelector(".divBackgroundVisualizar")
-                // let appendVisualizar = document.querySelector('.appendVisualizar')
-
-                btnVisualiza.addEventListener('click', (event) => {
-                    divBackgroundVisualizar.style.display = 'unset'
-
-                })
-
-                let divBackgroundEditar = document.querySelector(".divBackgroundEditar")
-                btnEdita.addEventListener('click', (event) => {
-                    divBackgroundEditar.style.display = 'unset'
-                })
-
-                let divBackgroundDeletar = document.querySelector(".divBackgroundDeletar")
-                btnDeleta.addEventListener('click', (event) => {
-                    divBackgroundDeletar.style.display = 'unset'
-                })
-            })
-
             return osta
 
         })
         .catch(error => {
             console.log(error)
         })
-
-    let closeVisualizar = document.querySelector(".closeVisualizar")
-
-    let divBackgroundVisualizar = document.querySelector(".divBackgroundVisualizar")
-    closeVisualizar.addEventListener('click', (event) => {
-        divBackgroundVisualizar.style.display = 'none'
-    })
-
-    let closeEditar = document.querySelector(".closeEditar")
-
-    let divBackgroundEditar = document.querySelector(".divBackgroundEditar")
-    closeEditar.addEventListener('click', (event) => {
-        divBackgroundEditar.style.display = 'none'
-    })
-
-    let closeDeletar = document.querySelector(".closeDeletar")
-
-    let divBackgroundDeletar = document.querySelector(".divBackgroundDeletar")
-    closeDeletar.addEventListener('click', (event) => {
-        divBackgroundDeletar.style.display = 'none'
-    })
 
     return departamentos
 }
@@ -335,7 +245,7 @@ async function criaDepto(body) {
     return url
 }
 
-async function alteraDescricao() {
+async function alteraDescricaoDoDepartamento() {
 
 
     const token = localStorage.getItem('token')
@@ -359,6 +269,50 @@ async function alteraDescricao() {
     return url
 }
 
+async function deletarUsuario(){
+    const token = localStorage.getItem('token')
+
+    const url = await fetch(`http://localhost:6278/admin/delete_user/${uuid}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` }
+    })
+        .then(resp => {
+            return resp.json()
+        })
+        .then(osta => {
+            // console.log(osta)
+            return osta
+
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+    return url
+}
+
+async function deletarDepartamento(uuid){
+    const token = localStorage.getItem('token')
+
+    const url = await fetch(`http://localhost:6278/departments/${uuid}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` }
+    })
+        .then(resp => {
+            return resp.json()
+        })
+        .then(osta => {
+            console.log(osta)
+            return osta
+
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+    return url
+}
+
 async function renderizaUsuarios(){
     const token = localStorage.getItem('token')
 
@@ -370,7 +324,7 @@ async function renderizaUsuarios(){
             return resp.json()
         })
         .then(osta => {
-            console.log(osta)
+            // console.log(osta)
             return osta
 
         })
@@ -393,7 +347,7 @@ async function contrataFuncionario(body){
             return resp.json()
         })
         .then(osta => {
-            console.log(osta)
+
             return osta
 
         })
@@ -421,5 +375,8 @@ export {
     criaDepto,
     listarEmpresas,
     renderizaUsuarios,
-    contrataFuncionario
+    contrataFuncionario,
+    alteraDescricaoDoDepartamento,
+    deletarUsuario,
+    deletarDepartamento
 }

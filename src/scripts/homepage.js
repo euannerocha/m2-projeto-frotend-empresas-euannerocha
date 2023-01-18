@@ -55,10 +55,42 @@ function goToCadastroDesk(){
     })
 }
 
+
+//
+
+async function renderizaEmpresas() {
+    let chamadaDaFunction = await requestEmpresas()
+
+    console.log(chamadaDaFunction)
+
+    let appendCards = document.querySelector('.ulCardsList')
+
+    chamadaDaFunction.forEach(element => {
+
+
+        let liCard = document.createElement('li')
+        let title = document.createElement('h1')
+        let hours = document.createElement('p')
+        let tagSetor = document.createElement('p')
+
+        title.innerText = element.name
+        hours.innerText = element.opening_hours
+        tagSetor.innerText = element.sectors.description
+
+        liCard.classList.add('liCard')
+        title.classList.add('title')
+        hours.classList.add('hours')
+        tagSetor.classList.add('tagSetor')
+
+        appendCards.append(liCard)
+        liCard.append(title, hours, tagSetor)
+    })
+}
+
 openMenuLogin()
 closeMenuLogin()
 goToLogin()
 goToCadastro()
 goToLoginDesk() 
 goToCadastroDesk()
-
+renderizaEmpresas()

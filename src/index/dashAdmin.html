@@ -39,7 +39,7 @@
         </div>
     </header>
 
-    <main>
+    <main class="container">
         
         <section class="sectionSelectAndCardsAdmin">
             <h1>Departamentos</h1>
@@ -86,35 +86,7 @@
 
         <!-- DIV MODAL VISUALIZAR -->
 
-        <div class="divBackgroundVisualizar">
-            <form class="modal">
-                <button type="button" class="closeVisualizar">X</button>
-
-                <h1 class="nomeDepto"></h1>
-                <p class="descricaoDepto"></p>
-                <p class="empresaPertencente"></p>
-
-                <select name="selecionarUsuario" id="selecionarUsuario">
-                    <option value="selecione">Selecionar Usuário</option>
-                </select>
-                <button class="btnContratarFuncionario">Contratar</button>
-            </form>
-            <ul class="usuariosDaEmpresa"></ul>
-        </div>
-
         <!-- DIV MODAL EDITAR -->
-
-        <div class="divBackgroundEditar">
-            <form class="modal">
-                <h1>Editar Departamento</h1>
-                <button type="button" class="closeEditar">X</button>
-
-                <input class="inptNomeDepto" type="text">
-               
-                <button class="criarDeptoModal">Salvar Alterações</button>
-            </form>
-        </div>
-
 
         <!-- DIV MODAL DELETAR -->
         
@@ -124,7 +96,7 @@
 
                 <p>Realmente deseja deletar o Departamento {} e demitir seus funcionários?</p>
                 
-                <button class="criarDeptoModal">Confirmar</button>
+                <button class="deletarDepartamentoBtn">Confirmar</button>
             </form>
         </div>
 
