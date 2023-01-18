@@ -102,11 +102,11 @@ async function mostraCardsUsuario(){
     const ulCardsUsuarios = document.querySelector('.ulCardsUsuarios')
 
     const usuarios = await renderizaUsuarios()
-    console.log(usuarios)
+    // console.log(usuarios)
     
     usuarios.forEach((element)=>{
         if(element.is_admin === false){
-        console.log(element)
+        // console.log(element)
     
     
             let liUsuario = document.createElement('li')
@@ -134,13 +134,14 @@ async function mostraCardsUsuario(){
 async function selectUser(){
     let selecionarUsuario = document.querySelector('#selecionarUsuario')
     const usuarios = await renderizaUsuarios()
-    console.log(usuarios)
+    // console.log(usuarios)
 
     usuarios.forEach((element)=>{
         if(element.is_admin === false){
 
             let optionUser = document.createElement('option')
             optionUser.innerText = element.username
+
     
             selecionarUsuario.append(optionUser)
         }
@@ -149,31 +150,36 @@ async function selectUser(){
     
 }
 
-async function contrataFuncionario(){
-    
-    const inputNome = document.querySelector('.inptNomeDepto')
-    const inputDescricao = document.querySelector('.inptDescricaoDepto')
+async function renderizaFuncionariosDeCadaEmpresa(){
+    let usuariosDaEmpresa = document.querySelector('.usuariosDaEmpresa')
 
-
-    let btnContratarFuncionario = document.querySelector('.btnContratarFuncionario')
-
-    btnContratarFuncionario.addEventListener('click', async (event) => {
-
-        console.log(event)
-
-        const objetoBody = {
-            'name': inputNome.value,
-            'description': inputDescricao.value,
-            'company_uuid': selectNivel.value
-        }
-
-        console.log(objetoBody)
-
-        const requisicao = await criaDepto(objetoBody)
-        console.log(requisicao)
-    })
-
+    console.log(usuariosDaEmpresa)
 }
+// async function contrataFuncionario(){
+    
+//     const inputNome = document.querySelector('.inptNomeDepto')
+//     const inputDescricao = document.querySelector('.inptDescricaoDepto')
+
+
+//     let btnContratarFuncionario = document.querySelector('.btnContratarFuncionario')
+
+//     btnContratarFuncionario.addEventListener('click', async (event) => {
+
+//         console.log(event)
+
+//         const objetoBody = {
+//             'name': inputNome.value,
+//             'description': inputDescricao.value,
+//             'company_uuid': selectNivel.value
+//         }
+
+//         console.log(objetoBody)
+
+//         const requisicao = await criaDepto(objetoBody)
+//         console.log(requisicao)
+//     })
+
+// }
 
 goToLogout()
 renderizaDeptos()
@@ -185,3 +191,4 @@ selectDoModalCriarDepartamento()
 criaModal()
 mostraCardsUsuario()
 selectUser()
+renderizaFuncionariosDeCadaEmpresa()
