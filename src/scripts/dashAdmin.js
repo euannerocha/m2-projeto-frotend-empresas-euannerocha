@@ -33,7 +33,7 @@ function goToLogout() {
 
 
 
-import { renderizaDeptos, selectEmpresas, listarSetores, criaDepto, listarEmpresas, listarDeptos, renderizaUsuarios, contrataFuncionario, deletarUsuario, deletarDepartamento } from './requests.js'
+import { renderizaDeptos, selectEmpresas, listarSetores, criaDepto, listarEmpresas, listarDeptos, renderizaUsuarios, contrataFuncionario, deletarUsuario, deletarDepartamento, desligaFuncionario, editaDepartamento } from './requests.js'
 
 
 
@@ -105,10 +105,9 @@ async function mostraCardsUsuario() {
     const usuarios = await renderizaUsuarios()
     // console.log(usuarios)
 
-    usuarios.forEach((element) => {
+    usuarios.forEach(async (element) => {
         if (element.is_admin === false) {
             // console.log(element)
-
 
             let liUsuario = document.createElement('li')
             let nameUsuario = document.createElement('h1')
@@ -124,6 +123,12 @@ async function mostraCardsUsuario() {
 
             btnEditarUsuario.innerText = 'Editar'
             btnDeletarUsuario.innerText = 'Deletar'
+            btnDeletarUsuario.addEventListener('click', (event)=>{
+                event.preventDefault()
+                deletarUsuario(element.uuid)
+                mostraCardsUsuario()
+            })
+           
 
             ulCardsUsuarios.append(liUsuario)
             liUsuario.append(nameUsuario, cargoUsuario, empresaUsuario, btnEditarUsuario, btnDeletarUsuario)
@@ -131,6 +136,16 @@ async function mostraCardsUsuario() {
     })
 
 }
+
+// async function eventoDeletarUser(){
+// let btnDeletarUsuario = document.querySelector('.btnDeletarUsuario')
+
+//     btnDeletarUsuario.addEventListener('click', (event)=>{
+//         event.preventDefault()
+//         deletarUsuario(element.uuid)
+//         mostraCardsUsuario()
+//     })
+// }
 
 async function selectUser(deptoUuid) {
     let selecionarUsuario = document.querySelector(`#selecionarUsuario-${deptoUuid}`)
@@ -156,15 +171,15 @@ async function selectUser(deptoUuid) {
         } else if (element.department_uuid === deptoUuid) {
             console.log(element.username)
 
-            renderizaFuncionariosDeCadaEmpresa(deptoUuid, element)
+            renderizaFuncionariosDeCadaEmpresaEDeletaFuncionario(deptoUuid, element)
         }
 
     })
 
 }
 
-async function renderizaFuncionariosDeCadaEmpresa(deptoUuid, usuario) {
-
+async function renderizaFuncionariosDeCadaEmpresaEDeletaFuncionario(deptoUuid, usuario) {
+    console.log(usuario)
 
     let usuariosDaEmpresa = document.querySelector(`.usuariosDaEmpresa-${deptoUuid}`)
     console.log(usuariosDaEmpresa)
@@ -181,28 +196,32 @@ async function renderizaFuncionariosDeCadaEmpresa(deptoUuid, usuario) {
 
     let btnDesligar = document.createElement('button')
     btnDesligar.innerText = 'Desligar'
-    
+
+    btnDesligar.addEventListener('click', (event)=>{
+        event.preventDefault()
+        desligaFuncionario(usuario.uuid)
+    })
 
     usuariosDaEmpresa.append(liUsuariosEmpresa)
-    liUsuariosEmpresa.append(nomeUser, cargoUser, nomeEmpresaUser)
+    liUsuariosEmpresa.append(nomeUser, cargoUser, nomeEmpresaUser, btnDesligar)
     console.log(usuariosDaEmpresa)
 
 }
 
 
-function deletaDepartamento() {
-    let deletarDepartamentoBtn = document.querySelector('.deletarDepartamentoBtn')
+async function deletaDepartamento(uuidDepto) {
+let deletarDepartamentoBtn = document.querySelector(`.deletarDepartamentoBtn-${uuidDepto}`)
+    console.log(deletarDepartamentoBtn)
 
-    // let ulCardsDepartamentos = document.querySelector('.ulCardsDepartamentos')
-
+    let divBackgroundDeletar = document.querySelector(`.divBackgroundDeletar-${uuidDepto}`)
 
     deletarDepartamentoBtn.addEventListener('click', async (event) => {
         event.preventDefault()
-        console.log(event)
-        await deletarDepartamento()
-
+        console.log(uuidDepto)
+        await deletarDepartamento(uuidDepto)
+        await renderDeptosECriaModaisVisualizarEditarDeletar()
+        divBackgroundDeletar.style.display = 'none'
     })
-
 
 }
 
@@ -211,7 +230,7 @@ async function renderDeptosECriaModaisVisualizarEditarDeletar() {
 
     let chamaFunctionRender = await renderizaDeptos()
     let appendDepto = document.querySelector('.ulCardsDepartamentos')
-
+    appendDepto.innerHTML = ''
     chamaFunctionRender.forEach(element => {
 
         console.log(element)
@@ -235,9 +254,9 @@ async function renderDeptosECriaModaisVisualizarEditarDeletar() {
         title.classList.add('title')
         description.classList.add('hours')
         companyName.classList.add('tagSetor')
-        btnVisualiza.classList.add(`btnVisualiza-${element.uuid}`)
-        btnEdita.classList.add(`btnEdita-${element.uuid}`)
-        btnDeleta.classList.add(`btnDeleta-${element.uuid}`)
+        btnVisualiza.classList.add(`btnVisualiza-${element.uuid}`, 'btnVisualiza')
+        btnEdita.classList.add(`btnEdita-${element.uuid}`, 'btnEdita')
+        btnDeleta.classList.add(`btnDeleta-${element.uuid}`, 'btnDeleta')
 
 
         appendDepto.append(liCard)
@@ -258,68 +277,82 @@ async function renderDeptosECriaModaisVisualizarEditarDeletar() {
         let btnContratarFuncionario = document.createElement('button')
         let usuariosDaEmpresa = document.createElement('ul')
 
-        divBackgroundVisualizar.classList.add(`divBackgroundVisualizar-${element.uuid}`)
+        divBackgroundVisualizar.classList.add(`divBackgroundVisualizar-${element.uuid}`, 'divBackgroundVisualizar')
         divBackgroundVisualizar.style.display = 'none'
-        modalForm.classList.add(`modal-${element.uuid}`)
+        modalForm.classList.add(`modal-${element.uuid}`, 'modal')
         btnCloseVisualizar.innerText = 'X'
-        btnCloseVisualizar.classList.add(`closeVisualizar-${element.uuid}`)
+        btnCloseVisualizar.classList.add(`closeVisualizar-${element.uuid}`, 'closeVisualizar')
         btnCloseVisualizar.type = 'button'
         nomeDepto.innerText = element.name
-        nomeDepto.classList.add(`nomeDepto-${element.uuid}`)
+        nomeDepto.classList.add(`nomeDepto-${element.uuid}`, 'nomeDepto')
         descricaoDepto.innerText = element.description
-        descricaoDepto.classList.add(`descricaoDepto-${element.uuid}`)
+        descricaoDepto.classList.add(`descricaoDepto-${element.uuid}`, 'descricaoDepto')
         empresaPertencente.innerText = element.companies.name
-        empresaPertencente.classList.add(`empresaPertencente-${element.uuid}`)
+        empresaPertencente.classList.add(`empresaPertencente-${element.uuid}`, 'empresaPertencente')
         selecionarUsuario.id = `selecionarUsuario-${element.uuid}`
         btnContratarFuncionario.innerText = 'Contratar'
-        btnContratarFuncionario.classList.add(`btnContratarFuncionario-${element.uuid}`)
-        usuariosDaEmpresa.classList.add(`usuariosDaEmpresa-${element.uuid}`)
+        btnContratarFuncionario.classList.add(`btnContratarFuncionario-${element.uuid}`, 'btnContratarFuncionario')
+        usuariosDaEmpresa.classList.add(`usuariosDaEmpresa-${element.uuid}`, 'usuariosDaEmpresa')
         usuariosDaEmpresa.id = element.companies.name
 
 
-        divBackgroundVisualizar.append(modalForm, usuariosDaEmpresa)
-        modalForm.append(btnCloseVisualizar, nomeDepto, descricaoDepto, empresaPertencente, selecionarUsuario, btnContratarFuncionario)
+        divBackgroundVisualizar.append(modalForm)
+        modalForm.append(btnCloseVisualizar, nomeDepto, descricaoDepto, empresaPertencente, selecionarUsuario, btnContratarFuncionario, usuariosDaEmpresa)
 
-        //editar
-        // <div class="divBackgroundEditar">
-        //     <form class="modal">
-        //         <h1>Editar Departamento</h1>
-        //         <button type="button" class="closeEditar">X</button>
-
-        //         <input class="inptNomeDepto" type="text">
-               
-        //         <button class="criarDeptoModal">Salvar Alterações</button>
-        //     </form>
-        // </div>
+        //EDITAR
 
         let divBackgroundEditar = document.createElement('div')
-        divBackgroundEditar.classList.add(`divBackgroundEditar-${element.uuid}`)
+        divBackgroundEditar.classList.add(`divBackgroundEditar-${element.uuid}`, 'divBackgroundEditar')
         divBackgroundEditar.style.display = 'none'
-            let formModalEditar = document.createElement('form')
-            formModalEditar.classList.add(`modal-${element.uuid}`)
-                let h1Editar = document.createElement('h1')
-                h1Editar.innerText = 'Editar Departamento'
-                let btnCloseEditar = document.createElement('button')
-                btnCloseEditar.innerText = 'X'
-                btnCloseEditar.type = 'button'
-                btnCloseEditar.classList.add(`closeEditar-${element.uuid}`)
-                let inptEditar = document.createElement('input')
-                inptEditar.classList.add(`inptNomeDepto-${element.uuid}`)
-                inptEditar.type = 'text'
-                let btnSalvarAlteracoes = document.createElement('button')
-                btnSalvarAlteracoes.innerText = 'Salvar alterações'
+        let formModalEditar = document.createElement('form')
+        formModalEditar.classList.add(`modal-${element.uuid}`, 'modal')
+        let h1Editar = document.createElement('h1')
+        h1Editar.innerText = 'Editar Departamento'
+        let btnCloseEditar = document.createElement('button')
+        btnCloseEditar.innerText = 'X'
+        btnCloseEditar.type = 'button'
+        btnCloseEditar.classList.add(`closeEditar-${element.uuid}`, 'closeEditar')
+        let inptEditar = document.createElement('input')
+        inptEditar.classList.add(`inptNomeDepto-${element.uuid}`, 'inptNomeDepto')
+        inptEditar.type = 'text'
+        inptEditar.placeholder = element.description
+        let btnSalvarAlteracoes = document.createElement('button')
+        btnSalvarAlteracoes.innerText = 'Salvar alterações'
+        btnSalvarAlteracoes.classList.add(`btnSalvarAlteracoes-${element.uuid}`)
 
-
-        //deletar
+        
         divBackgroundEditar.append(formModalEditar)
         formModalEditar.append(h1Editar, btnCloseEditar, inptEditar, btnSalvarAlteracoes)
-        containerMain.append(divBackgroundVisualizar, divBackgroundEditar)
-        teste(element.uuid)
+
+        //DELETA
+
+        let divBackgroundDeletar = document.createElement('div')
+        divBackgroundDeletar.classList.add(`divBackgroundDeletar-${element.uuid}`, 'divBackgroundDeletar')
+        divBackgroundDeletar.style.display = 'none'
+        let formDeletar = document.createElement('form')
+        formDeletar.classList.add(`modal-${element.uuid}`, 'modal')
+        let btnCloseDeletar = document.createElement('button')
+        btnCloseDeletar.innerText = 'X'
+        btnCloseDeletar.type = 'button'
+        btnCloseDeletar.classList.add(`closeDeletar-${element.uuid}`, 'closeDeletar')
+        let perguntaDeletar = document.createElement('p')
+        perguntaDeletar.innerText = `Realmente deseja deletar o Departamento ${element.name} e demitir seus funcionários?`
+        let btnConfirmarDeletar = document.createElement('button')
+        btnConfirmarDeletar.innerText = 'Confirmar'
+        btnConfirmarDeletar.classList.add(`deletarDepartamentoBtn-${element.uuid}`)
+
+
+        divBackgroundDeletar.append(formDeletar)
+        formDeletar.append(btnCloseDeletar, perguntaDeletar, btnConfirmarDeletar)
+        containerMain.append(divBackgroundVisualizar, divBackgroundEditar, divBackgroundDeletar)
+        botoesAbremEFechamModaisEBtnContrata(element.uuid)
     })
+
+    
 
 }
 
-function teste(uuidDepto) {
+function botoesAbremEFechamModaisEBtnContrata(uuidDepto) {
 
     let btnVisualiza = document.querySelector(`.btnVisualiza-${uuidDepto}`)
 
@@ -327,6 +360,26 @@ function teste(uuidDepto) {
 
     btnVisualiza.addEventListener('click', async (event) => {
         divBackgroundVisualizar.style.display = 'unset'
+        console.log(event)
+        await selectUser(uuidDepto)
+    })
+
+    let btnEdita = document.querySelector(`.btnEdita-${uuidDepto}`)
+
+    let divBackgroundEditar = document.querySelector(`.divBackgroundEditar-${uuidDepto}`)
+
+    btnEdita.addEventListener('click', async (event) => {
+        divBackgroundEditar.style.display = 'unset'
+        console.log(event)
+        await selectUser(uuidDepto)
+    })
+
+    let btnDeleta = document.querySelector(`.btnDeleta-${uuidDepto}`)
+
+    let divBackgroundDeletar = document.querySelector(`.divBackgroundDeletar-${uuidDepto}`)
+
+    btnDeleta.addEventListener('click', async (event) => {
+        divBackgroundDeletar.style.display = 'unset'
         console.log(event)
         await selectUser(uuidDepto)
     })
@@ -350,6 +403,7 @@ function teste(uuidDepto) {
         await selectUser(uuidDepto)
 
     })
+        deletaDepartamento(uuidDepto)
 
     let closeVisualizar = document.querySelector(`.closeVisualizar-${uuidDepto}`)
 
@@ -358,19 +412,32 @@ function teste(uuidDepto) {
         divBackgroundVisualizar.style.display = 'none'
     })
 
-    // let closeEditar = document.querySelector(`.closeEditar-${uuidDepto}`)
+    let closeEditar = document.querySelector(`.closeEditar-${uuidDepto}`)
 
 
-    // closeEditar.addEventListener('click', (event) => {
-    //     divBackgroundEditar.style.display = 'none'
-    // })
+    closeEditar.addEventListener('click', (event) => {
+        divBackgroundEditar.style.display = 'none'
+    })
 
-    // let closeDeletar = document.querySelector(`.closeDeletar-${uuidDepto}`)
+    let closeDeletar = document.querySelector(`.closeDeletar-${uuidDepto}`)
 
 
-    // closeDeletar.addEventListener('click', (event) => {
-    //     divBackgroundDeletar.style.display = 'none'
-    // })
+    closeDeletar.addEventListener('click', (event) => {
+        divBackgroundDeletar.style.display = 'none'
+    })
+    let btnSalvarAlteracoes = document.querySelector(`.btnSalvarAlteracoes-${uuidDepto}`)
+    btnSalvarAlteracoes.addEventListener('click', async (event)=>{
+        let inputEditaDepto = document.querySelector(`.inptNomeDepto-${uuidDepto}`)
+        let descricaoNova = document.querySelector(`descricaoDepto-${uuidDepto}`)
+        event.preventDefault()
+        const objetoBody = {
+            'description': inputEditaDepto.value,
+        }
+        descricaoNova.innerText = 
+        divBackgroundEditar.style.display = 'none'
+        await editaDepartamento(uuidDepto, objetoBody)
+        renderDeptosECriaModaisVisualizarEditarDeletar()
+    })
 }
 
 goToLogout()
@@ -381,5 +448,4 @@ selectEmpresas()
 criarBodyDeDepto()
 selectDoModalCriarDepartamento()
 criaModal()
-deletaDepartamento()
 mostraCardsUsuario()
