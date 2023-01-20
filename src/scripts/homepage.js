@@ -1,56 +1,56 @@
-import{ requestSetores, requestEmpresas } from './requests.js'
+import { requestSetores, requestEmpresas } from './requests.js'
 
 requestSetores()
 requestEmpresas()
 
-function openMenuLogin(){
+function openMenuLogin() {
 
-    let menuAsideContent = document.querySelector(".menuAsideContent") 
-    let openBtn = document.querySelector(".openBtn") 
+    let menuAsideContent = document.querySelector(".menuAsideContent")
+    let openBtn = document.querySelector(".openBtn")
 
-    openBtn.addEventListener('click', ()=>{     
+    openBtn.addEventListener('click', () => {
         menuAsideContent.style.display = `flex`
     })
 
 }
 
-function closeMenuLogin(){
-    let menuAsideContent = document.querySelector(`.menuAsideContent`) 
-    let closeBtn = document.querySelector(`.closeBtn`) 
+function closeMenuLogin() {
+    let menuAsideContent = document.querySelector(`.menuAsideContent`)
+    let closeBtn = document.querySelector(`.closeBtn`)
 
-    closeBtn.addEventListener('click', ()=>{
+    closeBtn.addEventListener('click', () => {
         menuAsideContent.style.display = `none`
     })
-} 
+}
 
-function goToLogin(){
+function goToLogin() {
     let loginBtn = document.querySelector('.goToLogin')
 
-    loginBtn.addEventListener('click', ()=>{
+    loginBtn.addEventListener('click', () => {
         window.location.replace('../../src/index/login.html')
     })
 }
 
-function goToCadastro(){
+function goToCadastro() {
     let cadastroBtn = document.querySelector('.goToCadastro')
 
-    cadastroBtn.addEventListener('click', ()=>{
+    cadastroBtn.addEventListener('click', () => {
         window.location.replace('../../src/index/register.html')
     })
 }
 
-function goToLoginDesk(){
+function goToLoginDesk() {
     let loginBtn = document.querySelector('.goToLoginDesktop')
 
-    loginBtn.addEventListener('click', ()=>{
+    loginBtn.addEventListener('click', () => {
         window.location.replace('../../src/index/login.html')
     })
 }
 
-function goToCadastroDesk(){
+function goToCadastroDesk() {
     let loginBtn = document.querySelector('.goToCadastroDesktop')
 
-    loginBtn.addEventListener('click', ()=>{
+    loginBtn.addEventListener('click', () => {
         window.location.replace('../../src/index/register.html')
     })
 }
@@ -61,12 +61,9 @@ function goToCadastroDesk(){
 async function renderizaEmpresas() {
     let chamadaDaFunction = await requestEmpresas()
 
-    console.log(chamadaDaFunction)
-
     let appendCards = document.querySelector('.ulCardsList')
 
     chamadaDaFunction.forEach(element => {
-
 
         let liCard = document.createElement('li')
         let title = document.createElement('h1')
@@ -87,10 +84,23 @@ async function renderizaEmpresas() {
     })
 }
 
+async function filterEmpresas() {
+    let chamadaDaFunction = await requestEmpresas()
+    console.log(chamadaDaFunction)
+
+    let setores = document.querySelector('#setores')
+    console.log(setores)
+
+    if (setores.value === chamadaDaFunction.sectors.description) {
+        renderizaEmpresas()
+    } 
+}
+
 openMenuLogin()
 closeMenuLogin()
 goToLogin()
 goToCadastro()
-goToLoginDesk() 
+goToLoginDesk()
 goToCadastroDesk()
 renderizaEmpresas()
+filterEmpresas()

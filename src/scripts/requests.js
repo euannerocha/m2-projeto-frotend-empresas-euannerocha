@@ -1,6 +1,3 @@
-// import { ClasseToastify } from "./toastfy.js"
-// import { visualizarDepartamento } from './dashAdmin.js'
-
 async function requestSetores() {
     let setores = await fetch('http://localhost:6278/sectors')
 
@@ -60,7 +57,6 @@ async function requestEmpresas() {
             return resp.json()
         })
         .then(osta => {
-            // console.log(osta)
 
             return osta
 
@@ -269,10 +265,10 @@ async function alteraDescricaoDoDepartamento() {
     return url
 }
 
-async function deletarUsuario(){
+async function deletarUsuario(uuidDoUsuario){
     const token = localStorage.getItem('token')
 
-    const url = await fetch(`http://localhost:6278/admin/delete_user/${uuid}`, {
+    const url = await fetch(`http://localhost:6278/admin/delete_user/${uuidDoUsuario}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
     })
@@ -291,20 +287,37 @@ async function deletarUsuario(){
     return url
 }
 
-async function deletarDepartamento(uuid){
+async function desligaFuncionario(uuidDoUsuario){
     const token = localStorage.getItem('token')
 
-    const url = await fetch(`http://localhost:6278/departments/${uuid}`, {
-        method: 'DELETE',
+    const url = await fetch(`http://localhost:6278/departments/dismiss/${uuidDoUsuario}`, {
+        method: 'PATCH',
         headers: { 'Authorization': `Bearer ${token}` }
     })
         .then(resp => {
             return resp.json()
         })
         .then(osta => {
-            console.log(osta)
+ 
             return osta
 
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+    return url
+}
+
+async function deletarDepartamento(id){
+    const token = localStorage.getItem('token')
+
+    const url = await fetch(`http://localhost:6278/departments/${id}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` }
+    })
+        .then(resp => {
+            return resp
         })
         .catch(error => {
             console.log(error)
@@ -358,7 +371,51 @@ async function contrataFuncionario(body){
     return url
 }
 
+async function editaDepartamento(uuidDepto, body){
+    const token = localStorage.getItem('token')
 
+    const url = await fetch(`http://localhost:6278/departments/${uuidDepto}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify(body)
+    })
+        .then(resp => {
+            return resp.json()
+        })
+        .then(osta => {
+
+            return osta
+
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+    return url
+}
+
+async function atualizarFuncionario(corpo){
+    const token = localStorage.getItem('token')
+
+    const url = await fetch(`http://localhost:6278/admin/update_user/${uuidDepto}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify(body)
+    })
+        .then(resp => {
+            return resp.json()
+        })
+        .then(osta => {
+
+            return osta
+
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+    return url
+}
 
 
 
@@ -378,5 +435,7 @@ export {
     contrataFuncionario,
     alteraDescricaoDoDepartamento,
     deletarUsuario,
-    deletarDepartamento
+    deletarDepartamento,
+    desligaFuncionario,
+    editaDepartamento
 }

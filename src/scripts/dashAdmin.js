@@ -137,16 +137,6 @@ async function mostraCardsUsuario() {
 
 }
 
-// async function eventoDeletarUser(){
-// let btnDeletarUsuario = document.querySelector('.btnDeletarUsuario')
-
-//     btnDeletarUsuario.addEventListener('click', (event)=>{
-//         event.preventDefault()
-//         deletarUsuario(element.uuid)
-//         mostraCardsUsuario()
-//     })
-// }
-
 async function selectUser(deptoUuid) {
     let selecionarUsuario = document.querySelector(`#selecionarUsuario-${deptoUuid}`)
     const usuarios = await renderizaUsuarios()
@@ -428,12 +418,12 @@ function botoesAbremEFechamModaisEBtnContrata(uuidDepto) {
     let btnSalvarAlteracoes = document.querySelector(`.btnSalvarAlteracoes-${uuidDepto}`)
     btnSalvarAlteracoes.addEventListener('click', async (event)=>{
         let inputEditaDepto = document.querySelector(`.inptNomeDepto-${uuidDepto}`)
-        let descricaoNova = document.querySelector(`descricaoDepto-${uuidDepto}`)
+        let descricaoNova = document.querySelector(`.descricaoDepto-${uuidDepto}`)
         event.preventDefault()
         const objetoBody = {
             'description': inputEditaDepto.value,
         }
-        descricaoNova.innerText = 
+        descricaoNova.innerHTML = inputEditaDepto.value
         divBackgroundEditar.style.display = 'none'
         await editaDepartamento(uuidDepto, objetoBody)
         renderDeptosECriaModaisVisualizarEditarDeletar()

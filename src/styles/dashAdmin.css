@@ -1,4 +1,4 @@
-body{
+body {
     width: 100vw;
     height: 100vh;
     background-size: cover;
@@ -7,16 +7,16 @@ body{
     overflow-x: scroll;
 }
 
-.figcaption{
+.figcaption {
     display: none;
 }
 
-.ulCardsUsuarios{
+.ulCardsUsuarios {
     display: flex;
     gap: 20px;
 }
 
-.sectionSelectAndCardsAdmin{
+.sectionSelectAndCardsAdmin {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -24,39 +24,29 @@ body{
     margin-top: 100px;
     align-items: flex-start;
 }
-.divCardsDepartamentos{
+
+.divCardsDepartamentos {
     max-width: 90vw;
 }
 
-.divBackgroundVisualizar{
-    position: relative;
+
+.divBackgroundVisualizar {
     display: none;
-    z-index: 3;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-grey-opacity-1);
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-black-transparent-20);
 }
 
-.modal{
+
+.modal {
     position: absolute;
     top: 50%;
     left: 50%;
 }
 
 
-.divBackgroundEditar{
-    position: fixed;
-    display: none;
-    z-index: 3;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-grey-opacity-1);
-}
-.divBackgroundDeletar{
+.divBackgroundEditar {
     position: fixed;
     display: none;
     z-index: 3;
@@ -67,20 +57,31 @@ body{
     background-color: var(--color-grey-opacity-1);
 }
 
-.ulCardsDepartamentos{
+.divBackgroundDeletar {
+    position: fixed;
+    display: none;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-grey-opacity-1);
+}
+
+.ulCardsDepartamentos {
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
 
 }
 
-.menuMobile{
+.menuMobile {
     display: flex;
     align-items: center;
     margin-right: 13px;
 }
 
-body>header{
+body>header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -89,18 +90,18 @@ body>header{
     border: 1px solid var(--color-black-transparent-20);
     z-index: 1;
     background-color: var(--color-white);
-    position:fixed;
-    top: 0;    
+    position: fixed;
+    top: 0;
 }
- 
-.openBtn{
+
+.openBtn {
     height: 15px;
     width: 23px;
     margin-right: 10px;
     background-image: '../assets/images/openBtn.png';
 }
 
-.closeBtn{
+.closeBtn {
     width: 25px;
     height: 25px;
     display: flex;
@@ -110,7 +111,7 @@ body>header{
     background-color: var(--color-white);
 }
 
-header>div:first-child{
+header>div:first-child {
     display: flex;
     align-items: center;
     margin-left: 27px;
@@ -118,7 +119,7 @@ header>div:first-child{
     border: none;
 }
 
-header>div:first-child>figure{
+header>div:first-child>figure {
     width: 12px;
     height: 12px;
     display: flex;
@@ -126,18 +127,18 @@ header>div:first-child>figure{
     border: none;
 }
 
-header>div:first-child>figure>img{
+header>div:first-child>figure>img {
     width: 12px;
     height: 12px;
 }
 
-header>div:first-child>h1{
+header>div:first-child>h1 {
     font-weight: var(--font-weight-2);
     font-size: var(--font-size-6);
     font-family: var(--font-family-poppins);
 }
 
-.menuAsideContent{
+.menuAsideContent {
     display: none;
     flex-direction: column;
     position: fixed;
@@ -150,23 +151,23 @@ header>div:first-child>h1{
     background-color: var(--color-white);
 }
 
-.menuAsideContent>ul{
+.menuAsideContent>ul {
     display: flex;
     gap: 12px;
     margin-right: 13px;
 }
 
-.menuAsideContent>ul>li>button{
+.menuAsideContent>ul>li>button {
     width: 140px;
     height: 40px;
 }
 
-.menuAsideContent>ul>li{
+.menuAsideContent>ul>li {
     width: 140px;
     height: 40px;
 }
 
-.login{
+.login {
     font-weight: var(--font-weight-2);
     font-size: var(--font-size-5);
     border: 1px solid var(--color-blue);
@@ -174,7 +175,7 @@ header>div:first-child>h1{
     background-color: var(--color-white);
 }
 
-.cadastro{
+.cadastro {
     font-weight: var(--font-weight-2);
     font-size: var(--font-size-5);
     border: none;
@@ -182,7 +183,7 @@ header>div:first-child>h1{
     color: var(--color-white);
 }
 
-main{
+main {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -190,11 +191,11 @@ main{
     gap: 100px;
 }
 
-.hidding{
+.hidding {
     display: none;
 }
 
-#setores{
+#setores {
     margin-top: 85px;
     display: flex;
     width: 280px;
@@ -206,27 +207,28 @@ main{
     padding-left: 65px;
     box-sizing: border-box;
 }
-.main{
+
+.main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.sectionSelectAndCards{
+.sectionSelectAndCards {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.divCardsList{
+.divCardsList {
     display: flex;
     width: 100vw;
     margin-left: 40px;
 }
 
-.ulCardsList{
+.ulCardsList {
     display: flex;
     flex-direction: row;
     overflow-y: scroll;
@@ -235,7 +237,7 @@ main{
     width: 100vw;
 }
 
-.liCard{
+.liCard {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -246,19 +248,19 @@ main{
     height: 211px;
 }
 
-.title{
+.title {
     font-size: var(--font-size-4);
     font-weight: var(--font-weight-2);
     margin-top: 13px;
 }
 
-.hours{
+.hours {
     font-size: var(--font-size-6);
     font-weight: var(--font-weight-3);
     margin-top: 50px;
 }
 
-.tagSetor{
+.tagSetor {
     font-size: var(--font-size-6);
     font-weight: var(--font-weight-3);
     color: var(--color-blue);
@@ -267,17 +269,42 @@ main{
     padding: 10px;
     margin-bottom: 30px;
 }
-@media(min-width: 768px){
-    .divBackgroundVisualizar{
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: 530px;
+    z-index: 4;
+    top: 300px;
+    left: 300px;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    padding: 3rem 1rem;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0);
+    color: white;
+}
+
+@media(min-width: 768px) {
+
+    .divBackgroundVisualizar {
         display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--color-black-transparent-20);
     }
 
-    .sectionSelectAndCardsAdmin{
+    .sectionSelectAndCardsAdmin {
         display: flex;
         flex-direction: row;
         gap: 20px;
     }
-    body{
+
+    body {
         width: 100vw;
         display: flex;
         flex-direction: row;
@@ -285,13 +312,13 @@ main{
         align-items: center;
     }
 
-    body>header{
+    body>header {
         display: flex;
         align-items: center;
         justify-content: space-around;
     }
 
-    main{
+    main {
         width: 100vw;
         height: 100vh;
         display: flex;
@@ -303,7 +330,7 @@ main{
         gap: 100px;
     }
 
-    main>div{
+    main>div {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -312,7 +339,8 @@ main{
         gap: 13px;
         position: relative;
     }
-    #setores{
+
+    #setores {
         display: flex;
         width: 40vw;
         height: 45px;
@@ -326,29 +354,31 @@ main{
         top: 15px;
         margin-left: 40px;
     }
-    .hidding{
+
+    .hidding {
         display: flex;
         width: 305px;
         height: 460px;
         position: inherit;
         background-image: url(../assets/images/homepageImage.png);
     }
-    .sectionSelectAndCards{
+
+    .sectionSelectAndCards {
         display: flex;
         /* margin-right: 100px; */
     }
-    
-    .divCardsList{
+
+    .divCardsList {
         display: flex;
         width: 40vw;
         overflow-y: scroll;
     }
 
-    .divCardsDepartamentos{
+    .divCardsDepartamentos {
         max-width: 90vw;
     }
-    
-    .ulCardsList{
+
+    .ulCardsList {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -359,8 +389,8 @@ main{
         height: 405px;
         width: 40vw;
     }
-    
-    .liCard{
+
+    .liCard {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -371,20 +401,20 @@ main{
         height: 211px;
         gap: 10px;
     }
-    
-    .title{
+
+    .title {
         font-size: var(--font-size-4);
         font-weight: var(--font-weight-2);
         margin-top: 13px;
     }
-    
-    .hours{
+
+    .hours {
         font-size: var(--font-size-6);
         font-weight: var(--font-weight-3);
         margin-top: 10px;
     }
-    
-    .tagSetor{
+
+    .tagSetor {
         font-size: var(--font-size-6);
         font-weight: var(--font-weight-3);
         color: var(--color-blue);
@@ -398,23 +428,23 @@ main{
         display: none;
     } */
 
-    .buttonsHomeAndLoginDesktop{
+    .buttonsHomeAndLoginDesktop {
         display: flex;
         gap: 11px;
     }
 
-    .login{
+    .login {
         height: 38px;
         width: 132px;
     }
 
-    .cadastro{
+    .cadastro {
         height: 38px;
         width: 132px;
     }
 }
 
-.divBackground{
+.divBackground {
     position: fixed;
     display: none;
     z-index: 3;
@@ -425,27 +455,7 @@ main{
     background-color: var(--color-grey-opacity-1);
 }
 
-.divBackgroundVisualizar{
-    position: fixed;
-    display: none;
-    z-index: 3;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-grey-opacity-1);
-}
-.divBackgroundEditar{
-    position: fixed;
-    display: none;
-    z-index: 3;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-grey-opacity-1);
-}
-.divBackgroundDeletar{
+.divBackgroundVisualizar {
     position: fixed;
     display: none;
     z-index: 3;
@@ -456,23 +466,47 @@ main{
     background-color: var(--color-grey-opacity-1);
 }
 
-.modal{
+.divBackgroundEditar {
+    position: fixed;
+    display: none;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-grey-opacity-1);
+}
+
+.divBackgroundDeletar {
+    position: fixed;
+    display: none;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-grey-opacity-1);
+}
+
+.modal {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
     width: 530px;
     z-index: 4;
-    top: 50%;
-    left: 50%;
+    top: 400px;
+    left: 300px;
     transform: translate(-50%, -50%);
     background-color: var(--color-white);
     padding: 3rem 1rem;
     gap: 10px;
     border-radius: 10px;
+    background-color: rgba(0, 0, 0);
+    color: white;
 }
 
-.close{
+.close {
     border: 1px solid var(--color-grey-7);
     border-radius: 100%;
     width: 35px;
@@ -484,14 +518,14 @@ main{
     background-color: transparent;
 }
 
-.close:hover{
+.close:hover {
     cursor: pointer;
 }
 
-#selecionarEmpresa{
+#selecionarEmpresa {
     max-width: 100px;
 }
 
-.close{
+.close {
     margin-right: 50px;
 }
