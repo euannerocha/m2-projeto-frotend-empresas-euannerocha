@@ -8,15 +8,15 @@ body {
   
   .c-loader {
     animation: is-rotating 1s infinite;
-    border: 6px solid var(--color-white);
+    border: 2px solid var(--color-white);
     border-radius: 50%;
-    border-top-color: var(--color-blue);
+    border-top-color: var(--color-dark-blue);
     height: 50px;
     width: 50px;
   }
   
   @keyframes is-rotating {
     to {
-      transform: rotate(1turn);
+      transform: rotate(2turn);
     }
   }

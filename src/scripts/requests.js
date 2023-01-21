@@ -419,6 +419,7 @@ async function atualizarFuncionario(corpo){
 
 
 
+
 export {
     login,
     criarUsuario,

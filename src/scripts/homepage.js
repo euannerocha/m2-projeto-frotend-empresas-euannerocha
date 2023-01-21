@@ -7,9 +7,12 @@ function openMenuLogin() {
 
     let menuAsideContent = document.querySelector(".menuAsideContent")
     let openBtn = document.querySelector(".openBtn")
+    let setores = document.querySelector('#setores')
 
     openBtn.addEventListener('click', () => {
         menuAsideContent.style.display = `flex`
+        openBtn.style.display = 'none'
+        setores.style.display = 'none'
     })
 
 }
@@ -17,9 +20,13 @@ function openMenuLogin() {
 function closeMenuLogin() {
     let menuAsideContent = document.querySelector(`.menuAsideContent`)
     let closeBtn = document.querySelector(`.closeBtn`)
+    let openBtn = document.querySelector(".openBtn")
+    let setores = document.querySelector('#setores')
 
     closeBtn.addEventListener('click', () => {
         menuAsideContent.style.display = `none`
+        openBtn.style.display = 'flex'
+        setores.style.display = 'flex'
     })
 }
 
