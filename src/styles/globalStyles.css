@@ -13,7 +13,7 @@ html{
     --color-blue: #4200FF;
     --color-white: #ffffff;
     --color-white-transparent-20: #ffffff84;
-    --color-white-transparent: #b4afaf71;
+    --color-white-transparent:  rgba(189,189,189,0.1);
     --color-black: #000000;
     --color-black-transparent-10: #00000010;
     --color-black-transparent-20: #00000020;
@@ -24,6 +24,7 @@ html{
     --color-black-transparent-95: #00000095;
     --color-red: #CE4646;
     --color-green: #4BA036;
+    --color-cyan: #03beaf;
 
     --color-dark-blue: rgb(2,0,36);
 

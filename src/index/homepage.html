@@ -14,35 +14,32 @@
 </head>
 
 <body>
+
     <header>
+
         <div>
             <figure>
                 <img src="../assets/images/ellipse.png" alt="ícone ilustrativo">
-                <figcaption class="figcaption">ícone ilustrativo: elipse de cor lilás</figcaption>
+                <figcaption class="figcaption">ícone ilustrativo: três elipses se conectando</figcaption>
             </figure>
             <h1>WorkSpace</h1>
         </div>
-
-        <!-- DIV PARA MOBILE -->
-        <div class="menuMobile">
+ 
+        <div class="menuHamburguer">
             <img class="openBtn" src="../assets/images/openBtn.png" alt="Abrir menu lateral">
-            <nav class="menuAsideContent">
-                <div>
-                    <img class="closeBtn" src="../assets/images/closeBtn.png" alt="Fechar menu lateral">
-                </div>
-                <ul>
-                    <li><button class="login goToLogin" aria-label="ir para a página de login">Login</button></li>
-                    <li><button class="cadastro goToCadastro" aria-label="ir para página de cadastro">Cadastro</button>
-                    </li>
-                </ul>
-            </nav>
         </div>
 
-        <!-- DIV PARA DESKTOP -->
-        <div class="buttonsHomeAndLoginDesktop">
-            <button class="login goToLoginDesktop" aria-label="ir para a página de login">Login</button>
-            <button class="cadastro goToCadastroDesktop" aria-label="ir para página de cadastro">Cadastro</button>
-        </div>
+        <nav class="menuAsideContent">
+            <div>
+                <img class="closeBtn" src="../assets/images/closeBtn.png" alt="Fechar menu lateral">
+            </div>
+            <ul>
+                <li><button class="login goToLogin" aria-label="ir para a página de login">Login</button></li>
+                <li><button class="cadastro goToCadastro" aria-label="ir para página de cadastro">Cadastro</button>
+                </li>
+            </ul>
+        </nav>
+
     </header>
 
     <main>
@@ -51,12 +48,13 @@
             <select name="selectSetores" id="setores">
                 <option value="todos">Todos</option>
             </select>
-
             <div class="divCardsList">
                 <ul class="ulCardsList"></ul>
             </div>
         </section>
+
     </main>
+
 </body>
 
 </html>

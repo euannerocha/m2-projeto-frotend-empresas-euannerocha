@@ -23,7 +23,7 @@ async function requestSetores() {
         .catch(error => {
             console.log(error)
         })
-    console.log(setores)
+    // console.log(setores)
     return setores
 }
 

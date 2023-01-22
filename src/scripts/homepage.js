@@ -14,7 +14,6 @@ function openMenuLogin() {
         openBtn.style.display = 'none'
         setores.id = 'setoresMargin'
     })
-
 }
 
 function closeMenuLogin() {
@@ -46,25 +45,6 @@ function goToCadastro() {
     })
 }
 
-function goToLoginDesk() {
-    let loginBtn = document.querySelector('.goToLoginDesktop')
-
-    loginBtn.addEventListener('click', () => {
-        window.location.replace('../../src/index/login.html')
-    })
-}
-
-function goToCadastroDesk() {
-    let loginBtn = document.querySelector('.goToCadastroDesktop')
-
-    loginBtn.addEventListener('click', () => {
-        window.location.replace('../../src/index/register.html')
-    })
-}
-
-
-//
-
 async function renderizaEmpresas() {
     let chamadaDaFunction = await requestEmpresas()
 
@@ -92,22 +72,31 @@ async function renderizaEmpresas() {
 }
 
 async function filterEmpresas() {
-    let chamadaDaFunction = await requestEmpresas()
-    console.log(chamadaDaFunction)
-
     let setores = document.querySelector('#setores')
     console.log(setores)
 
-    if (setores.value === chamadaDaFunction.sectors.description) {
-        renderizaEmpresas()
-    } 
+    let chamadaDaFunction = await requestEmpresas()
+    console.log(typeof chamadaDaFunction)
+
+    let filterChamada = chamadaDaFunction.filter((element)=>{
+        console.log(element.sectors.description)
+
+        // if(element.sectors.description === setores.value)
+    })
+
+    // chamadaDaFunction.forEach((element)=>{
+    //     console.log(element)
+    // })
+
+
+    // if (setores.value === chamadaDaFunction.sectors.description) {
+    //     renderizaEmpresas()
+    // } 
 }
 
 openMenuLogin()
 closeMenuLogin()
 goToLogin()
 goToCadastro()
-goToLoginDesk()
-goToCadastroDesk()
 renderizaEmpresas()
 filterEmpresas()
