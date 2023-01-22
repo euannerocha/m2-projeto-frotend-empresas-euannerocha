@@ -12,7 +12,7 @@ function openMenuLogin() {
     openBtn.addEventListener('click', () => {
         menuAsideContent.style.display = `flex`
         openBtn.style.display = 'none'
-        setores.style.display = 'none'
+        setores.id = 'setoresMargin'
     })
 
 }
@@ -26,7 +26,7 @@ function closeMenuLogin() {
     closeBtn.addEventListener('click', () => {
         menuAsideContent.style.display = `none`
         openBtn.style.display = 'flex'
-        setores.style.display = 'flex'
+        setores.id = 'setores'
     })
 }
 
