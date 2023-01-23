@@ -54,7 +54,7 @@ header>div:first-child>h1 {
     margin-left: 22px;
 }
 
-.menuHamburguer {
+.hamburguerMenu {
     display: flex;
     align-items: center;
     margin-right: 13px;
@@ -242,7 +242,7 @@ main {
         max-width: 80vw;
     }
 
-    .menuHamburguer{
+    .hamburguerMenu{
         display: flex;
         justify-content: center;
         align-items: center;
